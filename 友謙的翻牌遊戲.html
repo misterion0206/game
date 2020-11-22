@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>翻牌記憶遊戲</title>
+    <link rel="icon" href="./img/pokemon.jpg" type="image/png" sizes="16x16">
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+body {
+  height: 100vh;
+ 
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: url(./img/未命名.png);
+}
+
+h1 {
+  color: #ec1010;
+  padding: 1em 0;
+}
+
+.memory-game {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap; 
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  margin-top: 0;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  -o-transition: transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.memory-card:active {
+  -webkit-transform: scale(0.97);
+  -ms-transform: scale(0.97);
+  transform: scale(0.9);
+  
+ 
+}
+
+.memory-card.flip {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #c2e5e0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#tiktok{
+    width:424px;
+    height: 20px;
+    background:red;
+    border:2px solid darkgreen;
+    margin:10px auto;
+  }
+  #counter{
+    width:100%;
+    height:100%;
+    background:white;
+    float:right;
+  }
+  .mask{
+    width: 100vw;
+    height:100vh;
+    position: fixed;
+    top:0;
+    z-index: 99;
+    background: rgba(0,0,0,0.5)
+  }
+  .intro{
+    width: 400px;
+    height:400px;
+    background: rgba(255,255,255,0.9);
+    white-space: pre-line;
+    margin:100px auto 0px auto;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 40px;
+    font-family: "微軟正黑體";
+    padding:20px;
+  }
+  .intro button{
+    font-size:20px;
+    display: block;
+    margin:70px auto 0 auto;
+    padding:10px;
+  }
+    </style>
+  </head>
+  <h1>翻牌記憶遊戲</h1>
+  <body>
+    <section class="memory-game" >
+      <div class="memory-card" data-framework="react">
+        
+          <img class="front-face" src="./img/red dragon.png" alt="React" />
+        
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="react">
+        <img class="front-face" src="./img/red dragon.png" alt="React" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="angular">
+        <img class="front-face" src="./img/blue turtle.png" alt="Angular" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="angular">
+        <img class="front-face" src="./img/blue turtle.png" alt="Angular" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="ember">
+        <img class="front-face" src="./img/carbee.jpg" alt="Ember" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="ember">
+        <img class="front-face" src="./img/carbee.jpg" alt="Ember" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="vue">
+        <img class="front-face" src="./img/dog.jpg" alt="Vue" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="vue">
+        <img class="front-face" src="./img/dog.jpg" alt="Vue" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="backbone">
+        <img class="front-face" src="./img/duck.png" alt="Backbone" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="backbone">
+        <img class="front-face" src="./img/duck.png" alt="Backbone" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="aurelia">
+        <img class="front-face" src="./img/grean bug.jpg" alt="Aurelia" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+
+      <div class="memory-card" data-framework="aurelia">
+        <img class="front-face" src="./img/grean bug.jpg" alt="Aurelia" />
+        <img class="back-face" src="./img/pokemon.jpg" alt="Memory Card" />
+      </div>
+      
+    </section>
+    <div class="mask">
+      <div class="intro">
+        遊戲方式：
+          1.翻牌後記住牌面物品及位置
+          2.連續翻出兩張同物品的牌
+          3.在時間內消除所有的牌即完成遊戲
+        <button onclick="startGame()" >開始遊戲</button>
+      </div>
+    </div>
+    <div id="tiktok"><div id="counter"></div></div>
+ 
+    
+    <script>
+        const cards = document.querySelectorAll('.memory-card');
+        
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+        let counterHandle
+        let timer=60000
+        let counterWidth=100;
+        let complete=0;
+        let reset = false
+       
+        //點開始遊戲
+        function startGame(){
+        document.getElementsByClassName('mask')[0].style.display="none";
+        counterWidth=100; 
+        timer=60000;
+        complete=0;
+        document.getElementById('counter').style.width="100%";
+        counterHandle=setInterval(timeCounter,125) 
+        if (reset){
+          let hasFlippedCard = false;
+          let lockBoard = false;
+          let firstCard, secondCard;
+          cards.forEach(card => {
+          let randomPos = Math.floor(Math.random() * 12);
+          card.style.order = randomPos;
+          });
+          cards.forEach(card => card.classList.remove('flip'));
+          cards.forEach(card => card.addEventListener('click', flipCard));
+          resetBoard()
+          firstCard = this;
+          if (lockBoard) return;
+
+          // 避免翻同一張牌當做第二張
+          if (this === firstCard) return;
+  
+          this.classList.add('flip');
+
+          if (!hasFlippedCard) {
+          hasFlippedCard = true;
+          firstCard = this; // this => the clicked card
+          return;
+          }
+
+          secondCard = this;
+
+          checkForMatch();
+          }
+        }
+         
+        
+      
+        function timeCounter(){
+            if(timer<0){
+            document.getElementById('counter').style.width="0%";
+            clearInterval(counterHandle);
+            result();  //計時結束時執行結果判定函式
+            }else{
+            timer-=200;
+            counterWidth-=0.333333
+            document.getElementById('counter').style.width=counterWidth+"%";
+  }
+}
+
+
+
+function flipCard() {
+  // 剛剛沒配對成功的話，就把牌蓋起來
+  if (lockBoard) return;
+
+  // 避免翻同一張牌當做第二張
+  if (this === firstCard) return;
+  
+  this.classList.add('flip');
+
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this; // this => the clicked card
+    return;
+  }
+
+  secondCard = this;
+
+  checkForMatch();
+}
+
+function checkForMatch() {
+  // 如果牌組配對成功 => isMatch
+  // 就不可以再點擊那組牌 => disableCards()
+  // 配對錯誤就把該牌組蓋起來 => unflipCards()
+  let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+  if(isMatch){
+    chk()
+    disableCards() 
+  }else{
+    unflipCards() 
+  }
+  
+}
+
+function disableCards() {
+  // 移除監聽事件，釋放記憶體
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+  
+  resetBoard();
+}
+
+function unflipCards() {
+  lockBoard = true;
+
+  // 把牌蓋起來
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+    resetBoard();
+  }, 500);
+}
+
+function resetBoard() {
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+(function shuffle() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 12);
+    card.style.order = randomPos;
+  });
+})();
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+ function result(){
+  let com=complete;
+  let str="";
+  if(com>=12){
+    str="遊戲結果\n恭喜完成遊戲\n<button onclick='startGame()'>繼續遊戲</button>";
+  }else{
+    str="遊戲結果\n失敗，還有 "+(12-complete)+" 張未完成\n<button onclick='startGame()'>繼續遊戲</button>";
+  }
+  document.getElementsByClassName('intro')[0].innerHTML=str;
+  document.getElementsByClassName('mask')[0].style.display="block";
+  reset = true
+ }
+ function chk(){
+    complete+=2;
+    if(complete>=12){
+      result();
+      clearInterval(counterHandle);
+    }
+ }
+ 
+
+    </script>
+    
+  </body>
+</html>
